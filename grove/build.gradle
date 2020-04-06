@@ -1,0 +1,72 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'com.novoda.bintray-release'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
+
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+    lintOptions {
+        abortOnError false
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+
+publish {
+
+    def groupProjectID = 'com.samagra.grove'
+    def artifactProjectID = 'Groveloggingcompoenent'
+    def publishVersionID = '1.0.0'
+
+    userOrg = 'pankajjainauriga'
+    repoName = 'grove-logging-compoenent'
+    groupId = groupProjectID
+    artifactId = artifactProjectID
+    publishVersion = publishVersionID
+    desc = 'Android library for logging and remote error reporting.'
+    website = 'https://gitlab.com/umang.bhola18/grove-logging-compoenent'
+
+}
+
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.core:core-ktx:1.2.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    api 'io.sentry:sentry-android:1.7.23'
+    api "com.jakewharton.timber:timber:4.7.0"
+    implementation 'com.amazonaws:aws-android-sdk-core:2.2.13'
+    implementation 'com.amazonaws:aws-android-sdk-cognito:2.2.13'
+    implementation 'com.amazonaws:aws-android-sdk-ses:2.2.13'
+    testImplementation 'junit:junit:4.12'
+    api 'com.amitshekhar.android:rx2-android-networking:1.0.2'
+    api 'com.amitshekhar.android:jackson-android-networking:1.0.2'
+    api 'com.android.volley:volley:1.1.0'
+    api "io.reactivex.rxjava2:rxandroid:2.1.1"
+    api "io.reactivex.rxjava2:rxjava:2.2.10"
+    api 'com.google.code.gson:gson:2.8.1'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+}

@@ -1,0 +1,2 @@
+include ':app', ':grove'
+rootProject.name='grove-logging-component'
